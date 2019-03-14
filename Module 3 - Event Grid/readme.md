@@ -149,7 +149,7 @@ POST http://{myFunctionEndpoint}/api/iceCreamOrder
 
 1. If you have not already created an Event Grid Viewer web app, deploy one now by clicking the button below.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank">Deploy<img src="http://azuredeploy.net/deploybutton.png"/></a>
 
 1. Navigate to your website at `https://<your-site-name>.azurewebsites.net`.
 
