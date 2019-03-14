@@ -1,5 +1,5 @@
 using System.IO;
-using BFYOC.Api.Viewmodels;
+using BFYOC.Api.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;

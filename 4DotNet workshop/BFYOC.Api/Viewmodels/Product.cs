@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BFYOC.Api.Viewmodels
+namespace BFYOC.Api.ViewModels
 {
     public class Product
     {
