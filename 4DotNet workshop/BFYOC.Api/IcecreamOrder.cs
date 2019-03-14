@@ -23,18 +23,25 @@ namespace BFYOC.Api
             var content = new StreamReader(req.Body).ReadToEndAsync().Result;
             var icecreamOrder = JsonConvert.DeserializeObject<ViewModels.IcecreamOrder>(content);
 
-            string topicEndpoint = Environment.GetEnvironmentVariable("icecreamOrdersTopicKey", EnvironmentVariableTarget.Process);
-            string topicKey = Environment.GetEnvironmentVariable("icecreamOrdersTopicEndpoint", EnvironmentVariableTarget.Process);
+            string topicEndpoint = Environment.GetEnvironmentVariable("icecreamOrdersTopicEndpoint", EnvironmentVariableTarget.Process);
+            string topicKey = Environment.GetEnvironmentVariable("icecreamOrdersTopicKey", EnvironmentVariableTarget.Process);
 
             string topicHostname = new Uri(topicEndpoint).Host;
             TopicCredentials topicCredentials = new TopicCredentials(topicKey);
             EventGridClient client = new EventGridClient(topicCredentials);
 
-            var @event = new EventGridEvent();
-            @event.Data = icecreamOrder;
+            var @event = new EventGridEvent(
+                id: Guid.NewGuid().ToString("N"),
+                subject: "BFYOC/stores/serverlessWorkshop/orders",
+                dataVersion: "2.0",
+                eventType: nameof(IcecreamOrder),
+                data: icecreamOrder,
+                eventTime: DateTime.UtcNow
+                );
+
             await client.PublishEventsAsync(topicHostname, new List<EventGridEvent>{ @event });
 
-            return new OkResult();
+            return new OkObjectResult(@event.Id);
         }
     }
 }
